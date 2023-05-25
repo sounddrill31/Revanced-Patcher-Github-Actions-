@@ -9,4 +9,5 @@
 java -jar ~/repo/revanced*.jar \
  -a ~/input/*.apk \
  -o ~/output/revanced.apk \
- -b revanced-patches.jar
+ -b ~/patches/revanced*.jar \
+ -e vanced-microg-support
