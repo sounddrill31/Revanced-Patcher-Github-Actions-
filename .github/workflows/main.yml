@@ -58,7 +58,7 @@
           with: 
            file: "~/output/*.apk"
            name: ${{ github.run_id }}
-          tag_name: ${{ github.run_id }}
-          draft: true
+           tag_name: ${{ github.run_id }}
+           draft: true
           env:
            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
