@@ -1,5 +1,4 @@
  name: Revanced Patcher
-
  on:
   workflow_dispatch:
     inputs:
