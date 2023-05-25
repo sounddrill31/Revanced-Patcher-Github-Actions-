@@ -32,5 +32,13 @@
       - name: Prepare the environment
         run: |
           sudo apt update
+      - name: Get Repo for Revanced Patcher
+        run: |
+         mkdir ~/repo
+         git clone ${{ github.event.inputs.PROJECT_URL }} ~/repo
+         
       - name: Run Patch Script
+        run: |
+         chmod +x ./.github/scripts/script.sh
+         ./.github/scripts/
       
