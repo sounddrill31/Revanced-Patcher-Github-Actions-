@@ -38,17 +38,17 @@
              sudo apt-get install openjdk-11-jdk
         - name: Get Repo for Revanced Patcher
           run: |
-           mkdir ~/repo
-           wget ${{ github.event.inputs.PROJECT_URL }} --directory-prefix=~/repo
+           mkdir /home/runner/repo
+           wget ${{ github.event.inputs.PROJECT_URL }} --directory-prefix=/home/runner/repo
      #    git clone ${{ github.event.inputs.PROJECT_URL }} ~/repo
         - name: Get Patches for Revanced Patcher
           run: |
-            mkdir ~/patches
-            wget ${{ github.event.inputs.PATCHES_URL }} --directory-prefix=~/patches
+            mkdir /home/runner/patches
+            wget ${{ github.event.inputs.PATCHES_URL }} --directory-prefix=/home/runner/patches
         - name: Get APK
           run: |
-            mkdir ~/input
-            wget ${{ github.event.inputs.REVANCED_URL }} --directory-prefix=~/input
+            mkdir /home/runner/input
+            wget ${{ github.event.inputs.REVANCED_URL }} --directory-prefix=/home/runner/input
         - name: Run Patch Script
           run: |
            chmod +x scripts/script.sh
@@ -57,7 +57,7 @@
         - name: Upload to Release
           uses: xresloader/upload-to-github-release@v1
           with: 
-           file: "~/output/*.apk"
+           file: "/home/runner/output/*.apk"
            name: ${{ github.run_id }}
            tag_name: ${{ github.run_id }}
            draft: true
