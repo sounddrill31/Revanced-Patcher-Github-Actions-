@@ -58,6 +58,7 @@
           uses: xresloader/upload-to-github-release@v1
           with: 
            file: "/home/runner/output/*.apk"}
+           name: ${{ github.run_id }}
            tag_name: ${{ github.run_id }}
            draft: true
           env:
