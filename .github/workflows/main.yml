@@ -17,48 +17,48 @@
  jobs:
     build:
        runs-on: ubuntu-latest
-    permissions:
+ permissions:
        content: write
-    steps: 
-      - name: Display Run Parameters
-        run: |
-          echo "::group::User Environment Variables"
-          echo "REVANCED_URL: ${{ github.event.inputs.REVANCED_URL }}"
-          echo "PROJECT_URL: ${{ github.event.inputs.PROJECT_URL }}"
-          echo "PROJECT_URL: ${{ github.event.inputs.PATCHES_URL }}"
-      - name: Check Out
-        uses: actions/checkout@v3
+       steps:
+        - name: Display Run Parameters
+          run: |
+            echo "::group::User Environment Variables"
+            echo "REVANCED_URL: ${{ github.event.inputs.REVANCED_URL }}"
+            echo "PROJECT_URL: ${{ github.event.inputs.PROJECT_URL }}"
+            echo "PROJECT_URL: ${{ github.event.inputs.PATCHES_URL }}"
+        - name: Check Out
+          uses: actions/checkout@v3
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
-      - name: Cleanup
-        uses: rokibhasansagar/slimhub_actions@main
+        - name: Cleanup
+          uses: rokibhasansagar/slimhub_actions@main
       # That's it! Now use your normal steps
-      - name: Prepare the environment
-        run: |
-          sudo apt update
-      - name: Get Repo for Revanced Patcher
-        run: |
-         mkdir ~/repo
-         wget ${{ github.event.inputs.PROJECT_URL }} ~/repo
+        - name: Prepare the environment
+          run: |
+            sudo apt update
+        - name: Get Repo for Revanced Patcher
+          run: |
+           mkdir ~/repo
+           wget ${{ github.event.inputs.PROJECT_URL }} ~/repo
      #    git clone ${{ github.event.inputs.PROJECT_URL }} ~/repo
-      - name: Get Patches for Revanced Patcher
-        run: |
-          mkdir ~/patches
-          wget ${{ github.event.inputs.PATCHES_URL }} ~/patches
-      - name: Get APK
-        run: |
-          mkdir ~/input
-          wget ${{ github.event.inputs.REVANCED_URL }} ~/input
-      - name: Run Patch Script
-        run: |
-         chmod +x ./.github/scripts/script.sh
-         ./.github/scripts/script.sh
+        - name: Get Patches for Revanced Patcher
+          run: |
+            mkdir ~/patches
+            wget ${{ github.event.inputs.PATCHES_URL }} ~/patches
+        - name: Get APK
+          run: |
+            mkdir ~/input
+            wget ${{ github.event.inputs.REVANCED_URL }} ~/input
+        - name: Run Patch Script
+          run: |
+           chmod +x ./.github/scripts/script.sh
+           ./.github/scripts/script.sh
 
-      - name: Upload to Release
-        uses: xresloader/upload-to-github-release@v1
-        with: 
-         file: "~/output/*.apk"
-         name: ${{ github.run_id }}
-        tag_name: ${{ github.run_id }}
-        draft: true
-        env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+        - name: Upload to Release
+          uses: xresloader/upload-to-github-release@v1
+          with: 
+           file: "~/output/*.apk"
+           name: ${{ github.run_id }}
+          tag_name: ${{ github.run_id }}
+          draft: true
+          env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
