@@ -32,3 +32,5 @@
       - name: Prepare the environment
         run: |
           sudo apt update
+      - name: Run Patch Script
+      
