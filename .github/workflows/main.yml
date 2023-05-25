@@ -35,6 +35,7 @@
         - name: Prepare the environment
           run: |
             sudo apt update
+             sudo apt-get install openjdk-11-jdk
         - name: Get Repo for Revanced Patcher
           run: |
            mkdir ~/repo
