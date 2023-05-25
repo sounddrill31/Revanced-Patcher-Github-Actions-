@@ -53,3 +53,11 @@
           run: |
            chmod +x scripts/script.sh
            ./scripts/script.sh
+        - name: Upload to Release
+          uses: xresloader/upload-to-github-release@v1
+          with: 
+            files: "/home/runner/output/*.apk"}
+            tag_name: ${{ github.run_id }}
+            draft: true
+          env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
