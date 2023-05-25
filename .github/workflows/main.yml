@@ -51,8 +51,8 @@
             wget ${{ github.event.inputs.REVANCED_URL }} --directory-prefix=~/input
         - name: Run Patch Script
           run: |
-           chmod +x ./.github/scripts/script.sh
-           ./.github/scripts/script.sh
+           chmod +x scripts/script.sh
+           ./scripts/script.sh
 
         - name: Upload to Release
           uses: xresloader/upload-to-github-release@v1
