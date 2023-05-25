@@ -16,10 +16,10 @@
         default: 'https://github.com/revanced/revanced-patches/releases/download/v2.175.0-dev.2/revanced-patches-2.175.0-dev.2.jar'
  jobs:
     build:
-      runs-on: ubuntu-latest
-      permissions:
+       runs-on: ubuntu-latest
+    permissions:
        content: write
-      steps: 
+    steps: 
       - name: Display Run Parameters
         run: |
           echo "::group::User Environment Variables"
@@ -54,11 +54,11 @@
          ./.github/scripts/script.sh
 
       - name: Upload to Release
-      uses: xresloader/upload-to-github-release@v1
-      with:
-        file: "~/output/*.apk"
-        name: ${{ github.run_id }}
+        uses: xresloader/upload-to-github-release@v1
+        with: 
+         file: "~/output/*.apk"
+         name: ${{ github.run_id }}
         tag_name: ${{ github.run_id }}
         draft: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
