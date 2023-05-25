@@ -47,8 +47,21 @@
         run: |
           mkdir ~/patches
           wget ${{ github.event.inputs.PATCHES_URL }} ~/patches
+      - name: Get APK
+        run: |
+          mkdir ~/input
+          wget ${{ github.event.inputs.REVANCED_URL }} ~/input
       - name: Run Patch Script
         run: |
          chmod +x ./.github/scripts/script.sh
          ./.github/scripts/script.sh
-      
+
+      - name: Upload to Release
+      uses: xresloader/upload-to-github-release@v1
+      with:
+        file: "~/output/*.apk"
+        name: ${{ github.run_id }}
+        tag_name: ${{ github.run_id }}
+        draft: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
