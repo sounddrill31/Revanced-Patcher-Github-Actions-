@@ -6,8 +6,8 @@
 
 #output apk at ~/output
 
-java -jar ~/repo/revanced*.jar \
+java -jar ~/repo/*.jar \
  -a ~/input/*.apk \
  -o ~/output/revanced.apk \
- -b ~/patches/revanced*.jar \
+ -b ~/patches/*.jar \
  -e vanced-microg-support
