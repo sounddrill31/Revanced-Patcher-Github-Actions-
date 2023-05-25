@@ -9,7 +9,7 @@
       PROJECT_URL: 
         description: 'Give releases link to revanced project jar file'
         required: true
-        default: 'https://github.com/revanced/revanced-cli/releases/download/v2.21.2/revanced-cli-2.21.2-all.jar'
+        default: https://github.com/revanced/revanced-cli/releases/download/v2.21.2/revanced-cli-2.21.2-all.jar
       PATCHES_URL:
         description: 'Give releases link to revanced-patches jar file'
         required: true
