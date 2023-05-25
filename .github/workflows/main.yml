@@ -1,0 +1,13 @@
+ name: Revanced Patcher
+
+ on:
+  workflow_dispatch:
+    inputs:
+      REVANCED_URL:
+        description: 'Give URL Link to correct youtube apk'
+        required: true
+        default: ''
+      
+  jobs:
+    build:
+      runs-on: ubuntu-latest
