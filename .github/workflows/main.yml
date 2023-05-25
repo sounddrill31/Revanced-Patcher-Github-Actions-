@@ -8,9 +8,14 @@
         required: true
         default: ''
       PROJECT_URL: 
-        description: 'Give git link to revanced project jar'
+        description: 'Give releases link to revanced project jar file'
         required: true
         default: 'https://github.com/revanced/revanced-cli/releases/download/v2.21.2/revanced-cli-2.21.2-all.jar'
+      PATCHES_URL:
+        description: 'Give releases link to revanced-patches jar file'
+        required: true
+        default: 'https://github.com/revanced/revanced-patches/releases/download/v2.175.0-dev.2/revanced-patches-2.175.0-dev.2.jar'
+        
       
   jobs:
     build:
@@ -23,6 +28,7 @@
           echo "::group::User Environment Variables"
           echo "REVANCED_URL: ${{ github.event.inputs.REVANCED_URL }}"
           echo "PROJECT_URL: ${{ github.event.inputs.PROJECT_URL }}"
+          echo "PROJECT_URL: ${{ github.event.inputs.PATCHES_URL }}"
       - name: Check Out
          uses: actions/checkout@v3
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
