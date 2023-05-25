@@ -30,10 +30,10 @@
           echo "PROJECT_URL: ${{ github.event.inputs.PROJECT_URL }}"
           echo "PROJECT_URL: ${{ github.event.inputs.PATCHES_URL }}"
       - name: Check Out
-         uses: actions/checkout@v3
+        uses: actions/checkout@v3
     # Cleanup The Actions Workspace Using Custom Composite Run Actions
       - name: Cleanup
-         uses: rokibhasansagar/slimhub_actions@main
+        uses: rokibhasansagar/slimhub_actions@main
       # That's it! Now use your normal steps
       - name: Prepare the environment
         run: |
@@ -43,9 +43,12 @@
          mkdir ~/repo
          wget ${{ github.event.inputs.PROJECT_URL }} ~/repo
      #    git clone ${{ github.event.inputs.PROJECT_URL }} ~/repo
-         
+      - name: Get Patches for Revanced Patcher
+        run: |
+          mkdir ~/patches
+          wget ${{ github.event.inputs.PATCHES_URL }} ~/patches
       - name: Run Patch Script
         run: |
          chmod +x ./.github/scripts/script.sh
-         ./.github/scripts/
+         ./.github/scripts/script.sh
       
