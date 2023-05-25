@@ -8,9 +8,9 @@
         required: true
         default: ''
       PROJECT_URL: 
-        description: 'Give git link to preferred revanced project'
+        description: 'Give git link to revanced project jar'
         required: true
-        default: 'https://github.com/NoName-exe/revanced-extended'
+        default: 'https://github.com/revanced/revanced-cli/releases/download/v2.21.2/revanced-cli-2.21.2-all.jar'
       
   jobs:
     build:
@@ -35,7 +35,8 @@
       - name: Get Repo for Revanced Patcher
         run: |
          mkdir ~/repo
-         git clone ${{ github.event.inputs.PROJECT_URL }} ~/repo
+         wget ${{ github.event.inputs.PROJECT_URL }} ~/repo
+     #    git clone ${{ github.event.inputs.PROJECT_URL }} ~/repo
          
       - name: Run Patch Script
         run: |
